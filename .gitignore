@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest cache
+.pytest_cache/
+
+# Streamlit cache
+.streamlit/
+
+# OS artifacts & zip archives
+.DS_Store
+*.zip
+
+# PyTorch checkpoints (large binaries)
+models/checkpoints/*.pt
+
+# Temporary logs
+*.log

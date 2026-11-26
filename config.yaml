@@ -1,0 +1,51 @@
+simulation:
+  tick_seconds: 1.0
+  duration: 120
+  cpu_capacity: 100.0
+  default_quota: 50.0
+  min_quota: 10.0
+  max_quota: 100.0
+  sla_latency_threshold: 45.0
+
+forecast:
+  window_size: 12
+  prediction_horizon: 3
+  model_type: "lstm"
+  feature_cols:
+    - "cpu_utilization"
+    - "memory_utilization"
+    - "io_rate"
+    - "task_count"
+    - "request_rate"
+  target_col: "cpu_utilization"
+
+policy:
+  low_threshold: 35.0
+  high_threshold: 70.0
+  critical_threshold: 85.0
+  headroom_factor: 1.15
+  min_quota: 15.0
+  max_quota: 100.0
+
+reactive:
+  scale_up_threshold: 75.0
+  scale_down_threshold: 35.0
+  consecutive_epochs: 2
+  boost_step: 30.0
+  throttle_step: 15.0
+
+safety:
+  confidence_threshold: 0.60
+  drift_threshold: 2.2
+  inference_timeout_ms: 50.0
+  max_consecutive_fallbacks: 5
+
+hysteresis:
+  cooldown_ticks: 3
+  minimum_change: 8.0
+
+linux:
+  dry_run: true
+  cgroup_root: "/sys/fs/cgroup"
+  cgroup_slice: "adapt.slice"
+  sampling_interval_sec: 0.5

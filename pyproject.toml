@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adapt-os"
+version = "0.1.0"
+description = "Adapt: Forecast-Driven Intelligent Resource Management for Operating Systems"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Adapt Research Team" }]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "statsmodels",
+    "torch",
+    "psutil",
+    "streamlit",
+    "plotly",
+    "pyyaml",
+    "joblib",
+    "pytest"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["."]

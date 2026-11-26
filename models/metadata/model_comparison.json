@@ -1,0 +1,77 @@
+{
+  "results": [
+    {
+      "mae": 3.078,
+      "rmse": 3.977,
+      "r2": -0.931,
+      "mape": 7.01,
+      "directional_accuracy": 58.33,
+      "model": "NaivePersistence",
+      "inference_latency_ms": 0.0036660057958215475,
+      "is_multivariate": false
+    },
+    {
+      "mae": 2.647,
+      "rmse": 4.32,
+      "r2": -1.278,
+      "mape": 5.91,
+      "directional_accuracy": 75.0,
+      "model": "MovingAverage",
+      "inference_latency_ms": 0.008707982487976551,
+      "is_multivariate": false
+    },
+    {
+      "mae": 2.771,
+      "rmse": 4.132,
+      "r2": -1.084,
+      "mape": 6.22,
+      "directional_accuracy": 66.67,
+      "model": "ExponentialSmoothing",
+      "inference_latency_ms": 0.5444159905891865,
+      "is_multivariate": false
+    },
+    {
+      "mae": 3.224,
+      "rmse": 4.205,
+      "r2": -1.159,
+      "mape": 7.29,
+      "directional_accuracy": 58.33,
+      "model": "ARIMA",
+      "inference_latency_ms": 6.348499999148771,
+      "is_multivariate": false
+    },
+    {
+      "mae": 6.699,
+      "rmse": 8.071,
+      "r2": -6.952,
+      "mape": 14.47,
+      "directional_accuracy": 58.33,
+      "model": "LSTM",
+      "inference_latency_ms": 0.29770901892334223,
+      "is_multivariate": true
+    },
+    {
+      "mae": 3.313,
+      "rmse": 4.949,
+      "r2": -1.989,
+      "mape": 7.19,
+      "directional_accuracy": 75.0,
+      "model": "GRU",
+      "inference_latency_ms": 0.26587501633912325,
+      "is_multivariate": true
+    }
+  ],
+  "best_rmse_model": "NaivePersistence",
+  "best_mae_model": "MovingAverage",
+  "fastest_model": "NaivePersistence",
+  "best_directional_accuracy_model": "MovingAverage",
+  "feature_cols": [
+    "cpu_utilization",
+    "memory_utilization",
+    "io_rate",
+    "task_count",
+    "request_rate"
+  ],
+  "window_size": 12,
+  "horizon": 3
+}
