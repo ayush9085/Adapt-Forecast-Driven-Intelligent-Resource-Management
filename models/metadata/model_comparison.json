@@ -1,70 +1,74 @@
 {
   "results": [
     {
-      "mae": 3.078,
-      "rmse": 3.977,
-      "r2": -0.931,
-      "mape": 7.01,
-      "directional_accuracy": 58.33,
-      "model": "NaivePersistence",
-      "inference_latency_ms": 0.0036660057958215475,
-      "is_multivariate": false
+      "mae": 3.695,
+      "rmse": 4.275,
+      "r2": -0.083,
+      "mape": 13.04,
+      "directional_accuracy": 33.33,
+      "model": "1. Support Vector Regression (SVR)",
+      "inference_latency_ms": 0.11045800056308508
     },
     {
-      "mae": 2.647,
-      "rmse": 4.32,
-      "r2": -1.278,
-      "mape": 5.91,
-      "directional_accuracy": 75.0,
-      "model": "MovingAverage",
-      "inference_latency_ms": 0.008707982487976551,
-      "is_multivariate": false
+      "mae": 3.4,
+      "rmse": 4.103,
+      "r2": 0.003,
+      "mape": 10.31,
+      "directional_accuracy": 33.33,
+      "model": "2. Random Forest",
+      "inference_latency_ms": 12.558874994283542
     },
     {
-      "mae": 2.771,
-      "rmse": 4.132,
-      "r2": -1.084,
-      "mape": 6.22,
+      "mae": 4.077,
+      "rmse": 5.058,
+      "r2": -0.516,
+      "mape": 12.19,
       "directional_accuracy": 66.67,
-      "model": "ExponentialSmoothing",
-      "inference_latency_ms": 0.5444159905891865,
-      "is_multivariate": false
+      "model": "3. XGBoost",
+      "inference_latency_ms": 0.12024998432025313
     },
     {
-      "mae": 3.224,
-      "rmse": 4.205,
-      "r2": -1.159,
-      "mape": 7.29,
-      "directional_accuracy": 58.33,
-      "model": "ARIMA",
-      "inference_latency_ms": 6.348499999148771,
-      "is_multivariate": false
+      "mae": 15.849,
+      "rmse": 16.355,
+      "r2": -14.848,
+      "mape": 53.82,
+      "directional_accuracy": 66.67,
+      "model": "4. LSTM",
+      "inference_latency_ms": 0.39320799987763166
     },
     {
-      "mae": 6.699,
-      "rmse": 8.071,
-      "r2": -6.952,
-      "mape": 14.47,
-      "directional_accuracy": 58.33,
-      "model": "LSTM",
-      "inference_latency_ms": 0.29770901892334223,
-      "is_multivariate": true
+      "mae": 3.678,
+      "rmse": 4.346,
+      "r2": -0.119,
+      "mape": 13.09,
+      "directional_accuracy": 33.33,
+      "model": "5. GRU",
+      "inference_latency_ms": 0.30916702235117555
     },
     {
-      "mae": 3.313,
-      "rmse": 4.949,
-      "r2": -1.989,
-      "mape": 7.19,
-      "directional_accuracy": 75.0,
-      "model": "GRU",
-      "inference_latency_ms": 0.26587501633912325,
-      "is_multivariate": true
+      "mae": 5.733,
+      "rmse": 6.385,
+      "r2": -1.416,
+      "mape": 17.6,
+      "directional_accuracy": 66.67,
+      "model": "Proposed Adapt (Statistical-Guided Forecaster)",
+      "inference_latency_ms": 0.009708019206300378
     }
   ],
-  "best_rmse_model": "NaivePersistence",
-  "best_mae_model": "MovingAverage",
-  "fastest_model": "NaivePersistence",
-  "best_directional_accuracy_model": "MovingAverage",
+  "best_rmse_model": "2. Random Forest",
+  "best_mae_model": "2. Random Forest",
+  "fastest_model": "Proposed Adapt (Statistical-Guided Forecaster)",
+  "best_directional_accuracy_model": "3. XGBoost",
+  "xai_shap_summary": {
+    "method": "TreeSHAP",
+    "feature_shap_importance": {
+      "cpu_utilization": 0.2266,
+      "memory_utilization": 0.1631,
+      "io_rate": 0.4848,
+      "task_count": 0.0104,
+      "request_rate": 0.1152
+    }
+  },
   "feature_cols": [
     "cpu_utilization",
     "memory_utilization",

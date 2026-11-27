@@ -12,6 +12,9 @@ from adapt.forecasting.naive import NaivePersistenceForecaster
 from adapt.forecasting.moving_average import MovingAverageForecaster
 from adapt.forecasting.exponential_smoothing import ExponentialSmoothingForecaster
 from adapt.forecasting.arima_model import ARIMAForecaster
+from adapt.forecasting.svr_model import SVRForecaster
+from adapt.forecasting.rf_model import RandomForestForecaster
+from adapt.forecasting.xgboost_model import XGBoostForecaster
 from adapt.forecasting.lstm_model import LSTMForecaster
 from adapt.forecasting.gru_model import GRUForecaster
 from adapt.policy.policy_engine import PolicyEngine
@@ -25,6 +28,7 @@ from adapt.scheduler.adapt_scheduler import AdaptScheduler
 from adapt.simulation.simulator import SimulationEngine
 from adapt.evaluation.benchmark import BenchmarkEngine
 from adapt.evaluation.experiments import ExperimentLogger
+from adapt.evaluation.ablation import AblationStudyEngine
 from adapt.datasets.loader import validate_and_normalize_trace
 
 st.set_page_config(
@@ -105,6 +109,12 @@ def get_forecaster(model_name: str, horizon: int = 3):
         return ExponentialSmoothingForecaster(horizon=horizon)
     elif model_name == "ARIMA":
         return ARIMAForecaster(horizon=horizon)
+    elif model_name == "Support Vector Regression (SVR)":
+        return SVRForecaster(horizon=horizon)
+    elif model_name == "Random Forest":
+        return RandomForestForecaster(horizon=horizon)
+    elif model_name == "XGBoost":
+        return XGBoostForecaster(horizon=horizon)
     elif model_name == "LSTM":
         return LSTMForecaster(horizon=horizon, epochs=5)
     elif model_name == "GRU":
@@ -271,7 +281,7 @@ elif page == "2. Live Adapt Demo":
 # -------------------------------------------------------------
 elif page == "3. Forecasting Models":
     st.title("📈 Time-Series Resource Forecasting Comparative Analysis")
-    st.caption("Benchmark 6 distinct forecasting approaches trained on strictly chronological split windows (no temporal leakage).")
+    st.caption("Benchmark 5 standard ML/DL forecasting algorithms (SVR, RF, XGBoost, LSTM, GRU) against the proposed Adapt statistical forecaster.")
     
     meta_path = "models/metadata/model_comparison.json"
     if os.path.exists(meta_path):
@@ -296,6 +306,45 @@ elif page == "3. Forecasting Models":
         with c2:
             fig_lat = px.bar(cmp_df, x="model", y="inference_latency_ms", title="Inference Latency (ms - Lower is Better)", color="inference_latency_ms", template="plotly_dark")
             st.plotly_chart(fig_lat, use_container_width=True)
+
+        # Explainable AI (SHAP) Section
+        st.markdown("---")
+        st.subheader("🔍 Explainable AI (XAI): SHAP Feature Attribution")
+        st.caption("SHAP (SHapley Additive exPlanations) values computed on TreeSHAP model isolating individual telemetry feature contributions to future CPU demand predictions.")
+        xai_summary = meta.get("xai_shap_summary", {})
+        if "feature_shap_importance" in xai_summary:
+            shap_data = xai_summary["feature_shap_importance"]
+            shap_df = pd.DataFrame({
+                "Feature": list(shap_data.keys()),
+                "Mean |SHAP Value| (Importance)": list(shap_data.values())
+            }).sort_values(by="Mean |SHAP Value| (Importance)", ascending=False)
+            
+            c_shap1, c_shap2 = st.columns([1, 1])
+            with c_shap1:
+                st.dataframe(shap_df, use_container_width=True)
+            with c_shap2:
+                fig_shap = px.bar(shap_df, x="Mean |SHAP Value| (Importance)", y="Feature", orientation="h",
+                                  title="Feature Importance Ranking via SHAP", color="Mean |SHAP Value| (Importance)",
+                                  template="plotly_dark")
+                fig_shap.update_layout(yaxis=dict(autorange="reversed"))
+                st.plotly_chart(fig_shap, use_container_width=True)
+
+        # Component Ablation Study Section
+        st.markdown("---")
+        st.subheader("🔬 Component Ablation Study")
+        st.caption("Evaluates system performance when isolating individual architectural components (Hysteresis, Safety Guard, Headroom Buffer).")
+        if st.button("▶ Run Live Ablation Study Benchmark", type="secondary"):
+            ablation_engine = AblationStudyEngine()
+            ablation_df = ablation_engine.run_ablation(duration=100)
+            st.dataframe(ablation_df, use_container_width=True)
+            
+            col_ab1, col_ab2 = st.columns(2)
+            with col_ab1:
+                fig_ab_lat = px.bar(ablation_df, x="Configuration", y="P99 Latency (ms)", title="P99 Latency Impact Across Ablation Variants", color="P99 Latency (ms)", template="plotly_dark")
+                st.plotly_chart(fig_ab_lat, use_container_width=True)
+            with col_ab2:
+                fig_ab_thr = px.bar(ablation_df, x="Configuration", y="Allocation Changes (Thrash)", title="Actuator Thrashing (Allocation Changes)", color="Allocation Changes (Thrash)", template="plotly_dark")
+                st.plotly_chart(fig_ab_thr, use_container_width=True)
     else:
         st.info("Run `python3 scripts/train_models.py` to train models and generate the dynamic ranking metadata.")
 
