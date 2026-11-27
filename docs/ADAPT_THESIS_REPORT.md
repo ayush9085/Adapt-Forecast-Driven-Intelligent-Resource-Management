@@ -14,7 +14,7 @@
 - **Ayush Pandey** (Enrollment No. 590025156)
 - **Aditi Singh** (Enrollment No. 590025914)
 - **Dhruv Jha** (Enrollment No. 590023509)
-- **Hemang Gupta** (Enrollment No. 590025211)
+- **Hemang Gupta** (Enrollment No. 590025443)
 
 ### Under the Mentorship of:
 **Prof. Shubranil Das**  
@@ -30,7 +30,7 @@ School of Computer Science
 
 # CERTIFICATE OF APPROVAL
 
-This is to certify that the Major Project-Based Learning Thesis entitled **"ADAPT: Forecast-Driven Intelligent Resource Management for Operating Systems — A Proactive Multi-Tenant OS Scheduling Framework Using Time-Series Machine Learning and Decoupled Actuation"** submitted by **Ayush Pandey (590025156)**, **Aditi Singh (590025914)**, **Dhruv Jha (590023509)**, and **Hemang Gupta (590025211)** in partial fulfillment of the requirements for the award of the degree of **Bachelor of Technology in Computer Science & Engineering (Core)** at the **School of Computer Science, University of Petroleum and Energy Studies (UPES), Dehradun**, is an authentic record of research work carried out under my supervision and guidance.
+This is to certify that the Major Project-Based Learning Thesis entitled **"ADAPT: Forecast-Driven Intelligent Resource Management for Operating Systems — A Proactive Multi-Tenant OS Scheduling Framework Using Time-Series Machine Learning and Decoupled Actuation"** submitted by **Ayush Pandey (590025156)**, **Aditi Singh (590025914)**, **Dhruv Jha (590023509)**, and **Hemang Gupta (590025443)** in partial fulfillment of the requirements for the award of the degree of **Bachelor of Technology in Computer Science & Engineering (Core)** at the **School of Computer Science, University of Petroleum and Energy Studies (UPES), Dehradun**, is an authentic record of research work carried out under my supervision and guidance.
 
 To the best of my knowledge, the matter embodied in this report has not been submitted in part or full to any other University or Institute for the award of any degree, diploma, or fellowship.
 
@@ -62,7 +62,7 @@ We confirm that:
 **Ayush Pandey** (590025156)  
 **Aditi Singh** (590025914)  
 **Dhruv Jha** (590023509)  
-**Hemang Gupta** (590025211)  
+**Hemang Gupta** (590025443)  
 
 School of Computer Science, UPES, Dehradun  
 Date: 27th November 2026  

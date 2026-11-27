@@ -388,7 +388,7 @@ def generate_thesis_html():
                     <td><strong>Dhruv Jha</strong></td>
                 </tr>
                 <tr>
-                    <td><strong>590025211</strong></td>
+                    <td><strong>590025443</strong></td>
                     <td><strong>Hemang Gupta</strong></td>
                 </tr>
             </tbody>
@@ -424,7 +424,7 @@ def generate_thesis_html():
         <li><strong>Ayush Pandey</strong> (Enrollment No. 590025156)</li>
         <li><strong>Aditi Singh</strong> (Enrollment No. 590025914)</li>
         <li><strong>Dhruv Jha</strong> (Enrollment No. 590023509)</li>
-        <li><strong>Hemang Gupta</strong> (Enrollment No. 590025211)</li>
+        <li><strong>Hemang Gupta</strong> (Enrollment No. 590025443)</li>
     </ul>
 
     <p>in partial fulfillment of the requirements for the award of the degree of <strong>Bachelor of Technology in Computer Science & Engineering (Core)</strong> at the <strong>School of Computer Science, University of Petroleum and Energy Studies (UPES), Dehradun</strong>, is an authentic record of research work carried out under my supervision and guidance.</p>
@@ -494,7 +494,7 @@ def generate_thesis_html():
                 <td style="width: 50%;">
                     <div style="width: 180px; border-top: 1px solid #000; margin-bottom: 5px;"></div>
                     <strong>Hemang Gupta</strong><br/>
-                    Enrollment: 590025211
+                    Enrollment: 590025443
                 </td>
             </tr>
         </table>
